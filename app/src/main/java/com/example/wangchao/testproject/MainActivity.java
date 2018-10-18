@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import com.example.wangchao.testproject.activity.BaseActivity;
 import com.example.wangchao.testproject.activity.CustomViewActivity;
 import com.example.wangchao.testproject.activity.WaterImgActivity;
+import com.example.wangchao.testproject.activity.XfermodeActivity;
 
 import java.text.DecimalFormat;
 
@@ -42,6 +43,7 @@ public class MainActivity extends BaseActivity {
         findViewById(R.id.okhttp).setOnClickListener(this);
         findViewById(R.id.waterimg).setOnClickListener(this);
         findViewById(R.id.path_btn).setOnClickListener(this);
+        findViewById(R.id.xfo__btn).setOnClickListener(this);
     }
 
     @Override
@@ -58,6 +60,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.path_btn:
                 PathViewActivity.startActivity(this);
+                break;
+            case R.id.xfo__btn:
+                XfermodeActivity.startActivity(this);
                 break;
         }
     }

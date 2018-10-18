@@ -166,7 +166,7 @@ public class OkhttpActivity extends BaseActivity {
             }
 
             @Override
-            public void onFailure(WebSocket webSocket, Throwable t, @javax.annotation.Nullable Response response) {
+            public void onFailure(WebSocket webSocket, Throwable t,  Response response) {
                 super.onFailure(webSocket, t, response);
             }
         });

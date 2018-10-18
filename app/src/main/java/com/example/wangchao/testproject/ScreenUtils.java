@@ -18,6 +18,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import utils.Utils;
+
 import static android.Manifest.permission.WRITE_SETTINGS;
 
 /**

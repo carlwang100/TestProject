@@ -20,6 +20,7 @@
         <activity android:name="okhttp.OkhttpActivity"/>
         <activity android:name=".activity.WaterImgActivity"/>
         <activity android:name=".PathViewActivity"/>
+        <activity android:name=".activity.XfermodeActivity"/>
     </application>
 
 </manifest>
