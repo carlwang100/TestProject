@@ -27,7 +27,6 @@ import okhttp3.WebSocketListener;
 import okio.ByteString;
 
 public class OkhttpActivity extends BaseActivity {
-
     public static void startActivity(Context context){
         Intent i = new Intent(context, OkhttpActivity.class);
         context.startActivity(i);
