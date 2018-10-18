@@ -1,7 +1,6 @@
 package okhttp.chainmode;
 
 public class main {
-
     static void main(){
        Handler controHandler1 = new ControHandler1();
        Handler controHandler2 = new ControHandler2();
