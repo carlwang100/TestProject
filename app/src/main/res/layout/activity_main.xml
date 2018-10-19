@@ -45,6 +45,13 @@
                 android:layout_height="wrap_content"
                 android:text="xfermode Widget"
                 />
+            <Button
+                android:id="@+id/round_img_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RoundImage Widget"
+                />
+
 
 
         </LinearLayout>

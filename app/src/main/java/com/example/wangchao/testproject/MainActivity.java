@@ -16,6 +16,7 @@ import com.example.wangchao.testproject.activity.XfermodeActivity;
 import java.text.DecimalFormat;
 
 import okhttp.OkhttpActivity;
+import widget.RoundImageActivity;
 
 public class MainActivity extends BaseActivity {
 
@@ -44,6 +45,7 @@ public class MainActivity extends BaseActivity {
         findViewById(R.id.waterimg).setOnClickListener(this);
         findViewById(R.id.path_btn).setOnClickListener(this);
         findViewById(R.id.xfo__btn).setOnClickListener(this);
+        findViewById(R.id.round_img_btn).setOnClickListener(this);
     }
 
     @Override
@@ -63,6 +65,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.xfo__btn:
                 XfermodeActivity.startActivity(this);
+                break;
+            case R.id.round_img_btn:
+                RoundImageActivity.startActivity(this);
                 break;
         }
     }

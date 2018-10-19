@@ -1,6 +1,7 @@
 package widget;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -44,7 +45,28 @@ public class XfermodeView extends View {
         mRecPaint.setColor(Color.BLUE);
         mRecPaint.setStyle(Paint.Style.FILL);
 
+
     }
+
+    Bitmap makeSrc() {
+        Bitmap bm = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas c = new Canvas(bm);
+        Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);
+        p.setColor(0xFFFFCC44);
+
+        c.drawCircle(getWidth() / 2, getHeight() / 2, mRadius, p);
+        return bm;
+    }
+
+    Bitmap makeDst() {
+        Bitmap bm = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas c = new Canvas(bm);
+        Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);
+        p.setColor(0xFF66AAFF);
+        c.drawRect(mCenterX, mCenterY, (float) (mCenterX + mRadius * 1.5), (float) (mCenterY + mRadius * 1.5), paint);
+        return bm;
+    }
+
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -58,8 +80,11 @@ public class XfermodeView extends View {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        mDestRect = new RectF(mCenterX - mRadius, mCenterY - mRadius, mCenterX + mRadius, mCenterY + mRadius);
-        mSrcRect = new RectF(mCenterX , mCenterY, mCenterX + mRadius, mCenterY + mRadius);
+//        mDestRect = new RectF(mCenterX - mRadius, mCenterY - mRadius, mCenterX + mRadius, mCenterY + mRadius);
+//        mSrcRect = new RectF(mCenterX , mCenterY, mCenterX + mRadius, mCenterY + mRadius);
+
+        makeSrc();
+        makeDst();
     }
 
     @Override
@@ -67,11 +92,12 @@ public class XfermodeView extends View {
         super.onDraw(canvas);
         canvas.drawColor(Color.GREEN);
         int layerId = canvas.saveLayer(0, 0, canvas.getWidth(), canvas.getHeight(), null, Canvas.ALL_SAVE_FLAG);
-        canvas.drawRect(mCenterX, mCenterY, mCenterX + mRadius, mCenterY + mRadius, mRecPaint);
-        mRecPaint.setColor(Color.YELLOW);
-        mRecPaint.setXfermode(xfermode);
-        canvas.drawCircle(mCenterX, mCenterY, mRadius, mRecPaint);
-        mRecPaint.setXfermode(null);
+        paint.setColor(Color.YELLOW);
+        canvas.drawCircle(mCenterX, mCenterY, mRadius, paint);
+        paint.setXfermode(xfermode);
+        paint.setColor(Color.BLUE);
+        canvas.drawRect(mCenterX, mCenterY, (float) (mCenterX + mRadius * 1.5), (float) (mCenterY + mRadius * 1.5), paint);
+        paint.setXfermode(null);
         canvas.restoreToCount(layerId);
     }
 }

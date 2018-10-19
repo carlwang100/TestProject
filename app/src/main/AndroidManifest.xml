@@ -21,6 +21,7 @@
         <activity android:name=".activity.WaterImgActivity"/>
         <activity android:name=".PathViewActivity"/>
         <activity android:name=".activity.XfermodeActivity"/>
+        <activity android:name="widget.RoundImageActivity" />
     </application>
 
 </manifest>
