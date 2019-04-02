@@ -1,14 +1,14 @@
 package com.example.wangchao.testproject.activity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
 import com.example.wangchao.testproject.interface2.IBaseView;
 
-public abstract class BaseActivity extends AppCompatActivity implements IBaseView{
+public abstract class BaseActivity extends Activity implements IBaseView{
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

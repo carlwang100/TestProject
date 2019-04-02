@@ -1,21 +1,15 @@
-package com.example.wangchao.testproject;
+package com.example.wangchao.testproject.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 
-import com.example.wangchao.testproject.activity.BaseActivity;
-import com.example.wangchao.testproject.activity.CustomViewActivity;
-import com.example.wangchao.testproject.activity.WaterImgActivity;
-import com.example.wangchao.testproject.activity.XfermodeActivity;
+import com.example.wangchao.testproject.PathViewActivity;
+import com.example.wangchao.testproject.R;
 
 import java.text.DecimalFormat;
 
 import okhttp.OkhttpActivity;
+import thread.ThreadTestActivity;
 import widget.RoundImageActivity;
 
 public class MainActivity extends BaseActivity {
@@ -29,7 +23,6 @@ public class MainActivity extends BaseActivity {
         DecimalFormat df=new DecimalFormat(".##");
         double result = x / y;
         int r = (int) (Double.valueOf(df.format(result)) * 100);
-        Log.d("wangchao", "" + r);
     }
 
 
@@ -46,6 +39,7 @@ public class MainActivity extends BaseActivity {
         findViewById(R.id.path_btn).setOnClickListener(this);
         findViewById(R.id.xfo__btn).setOnClickListener(this);
         findViewById(R.id.round_img_btn).setOnClickListener(this);
+        findViewById(R.id.thread_btn).setOnClickListener(this);
     }
 
     @Override
@@ -68,6 +62,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.round_img_btn:
                 RoundImageActivity.startActivity(this);
+                break;
+            case R.id.thread_btn:
+                ThreadTestActivity.startActivity(this);
                 break;
         }
     }
