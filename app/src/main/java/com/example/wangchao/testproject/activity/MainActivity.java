@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.example.wangchao.testproject.PathViewActivity;
 import com.example.wangchao.testproject.R;
+import com.example.wangchao.testproject.aidl.BookMnagerActivity;
 
 import java.text.DecimalFormat;
 
@@ -40,6 +41,7 @@ public class MainActivity extends BaseActivity {
         findViewById(R.id.xfo__btn).setOnClickListener(this);
         findViewById(R.id.round_img_btn).setOnClickListener(this);
         findViewById(R.id.thread_btn).setOnClickListener(this);
+        findViewById(R.id.aidl_btn).setOnClickListener(this);
     }
 
     @Override
@@ -65,6 +67,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.thread_btn:
                 ThreadTestActivity.startActivity(this);
+                break;
+            case R.id.aidl_btn:
+                BookMnagerActivity.startActivity(this);
                 break;
         }
     }

@@ -23,6 +23,13 @@
         <activity android:name=".activity.XfermodeActivity"/>
         <activity android:name="widget.RoundImageActivity" />
         <activity android:name="thread.ThreadTestActivity"/>
+
+        <service android:name=".service.BookManagerService"
+            android:process=":remote"
+            android:enabled="true"
+            android:exported="true"
+            />
+        <activity android:name=".aidl.BookMnagerActivity"/>
     </application>
 
 </manifest>
