@@ -2,17 +2,22 @@ package okhttp;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.UiThread;
+import android.os.Bundle;
+import android.os.Environment;
+import android.os.PersistableBundle;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.wangchao.testproject.R;
-import com.example.wangchao.testproject.activity.BaseActivity;
+
+import okhttp3.Cache;
+import okhttp3.Call;
+import okhttp3.Callback;
+import sunland.example.wangchao.testproject.activity.BaseActivity;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Time;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.FormBody;
@@ -41,6 +46,13 @@ public class OkhttpActivity extends BaseActivity {
     public void initViews() {
        findViewById(R.id.http_get).setOnClickListener(this);
        findViewById(R.id.http_post).setOnClickListener(this);
+        findViewById(R.id.my_okhttp).setOnClickListener(this);
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        init();
     }
 
     @Override
@@ -51,6 +63,9 @@ public class OkhttpActivity extends BaseActivity {
                 break;
             case R.id.http_post:
 //                postFile();
+                break;
+            case R.id.my_okhttp:
+                startActivity(new Intent(OkhttpActivity.this, MyOkhttpActivity.class));
                 break;
         }
     }
@@ -123,12 +138,6 @@ public class OkhttpActivity extends BaseActivity {
 
     }
 
-    private OkHttpClient client = new OkHttpClient.Builder()
-            .connectTimeout(10, TimeUnit.SECONDS)
-            .writeTimeout(20, TimeUnit.SECONDS)
-            .readTimeout(20, TimeUnit.SECONDS)
-            .build();
-
 
     /**
      * websocket
@@ -182,36 +191,39 @@ public class OkhttpActivity extends BaseActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Response response = null;
-                try {
-                    response = client.newCall(request).execute();
-                    if (response.isSuccessful()){
-                        final Response finalResponse = response;
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                try {
-                                    Log.i("wangchao","打印GET响应的数据：" + finalResponse.body().string());
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
-
-                            }
-                        });
-
-                    }else {
-                        final Response finalResponse1 = response;
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Log.d("wangchao", "run: error");
-                            }
-                        });
+                client.newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.e("TAG", "onFailure: ");
                     }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        Log.d("TAG", "onResponse: 缓存部分->>>" + response.cacheResponse());
+                        Log.d("TAG", "onResponse: 网络部分->>>" + response.networkResponse());
+                    }
+                });
             }
         }).start();
     }
+
+    Cache cache;
+    OkHttpClient client;
+    private void init(){
+        File file = new File(Environment.getExternalStorageDirectory(), "cache");
+        cache= new Cache(file, 10*1024*1024);
+        Log.d("", "init: ");
+
+         client = new OkHttpClient.Builder()
+                .cache(cache)
+                .addNetworkInterceptor(new HttpCacheInterceptor())
+                .connectTimeout(10, TimeUnit.SECONDS)
+                .writeTimeout(20, TimeUnit.SECONDS)
+                .readTimeout(20, TimeUnit.SECONDS)
+                .build();
+    }
+
+
+
+
 }

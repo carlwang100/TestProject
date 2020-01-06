@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.example.wangchao.testproject.R;
-import com.example.wangchao.testproject.activity.BaseActivity;
+import sunland.example.wangchao.testproject.activity.BaseActivity;
 
 
 public class ThreadTestActivity extends BaseActivity {

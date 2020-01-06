@@ -3,7 +3,7 @@
 buildscript {
 
     repositories {
-        maven { url 'http://192.168.1.216:8100/archiva/repository/public' }
+//        maven { url 'http://192.168.1.216:8100/archiva/repository/public' }
         maven { url 'https://jitpack.io' }
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         google()
@@ -20,7 +20,7 @@ buildscript {
 
 allprojects {
     repositories {
-        maven { url 'http://192.168.1.216:8100/archiva/repository/public' }
+//        maven { url 'http://192.168.1.216:8100/archiva/repository/public' }
         maven { url 'https://jitpack.io' }
         google()
         jcenter()

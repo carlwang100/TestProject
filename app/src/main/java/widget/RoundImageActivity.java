@@ -19,7 +19,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.wangchao.testproject.R;
-import com.example.wangchao.testproject.activity.BaseActivity;
+import sunland.example.wangchao.testproject.activity.BaseActivity;
 
 public class RoundImageActivity extends BaseActivity {
 

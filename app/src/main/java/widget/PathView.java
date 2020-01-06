@@ -65,4 +65,22 @@ public class PathView extends View {
         mPath.addArc(new RectF(mRect), 0, 90);//从0度开始沿着椭圆画弧线到90度
         canvas.drawPath(mPath, mPaint);
     }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        //如果view在布局中使用wrap_content ,这时候就是AT_MOST,我们需要在onmeasure里面做特殊处理，否则和match_parent就没有区别了
+        int widthSpecMode = MeasureSpec.getMode(widthMeasureSpec);
+        int widthSpecSize = MeasureSpec.getSize(widthMeasureSpec);
+        int heightSpecMode = MeasureSpec.getMode(heightMeasureSpec);
+        int heightSpecSize = MeasureSpec.getSize(heightMeasureSpec);
+
+        if (widthSpecMode == MeasureSpec.AT_MOST && heightSpecMode == MeasureSpec.AT_MOST){
+            setMeasuredDimension(500, 300);
+        }else if (heightSpecMode == MeasureSpec.AT_MOST){
+            setMeasuredDimension(widthSpecSize, 300);
+        }else if (widthSpecMode == MeasureSpec.AT_MOST){
+            setMeasuredDimension(500, heightSpecSize);
+        }
+    }
 }

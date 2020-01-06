@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">imsdk</string>
+    <string name="a_msg_revoke_by_you">你撤回了一条消息</string>
+    <string name="a_msg_revoke_by_someone"> %1$s 撤回了一条消息</string>
+    <string name="im_msg_audio">[语音]</string>
+    <string name="im_msg_file">[文件]</string>
+    <string name="im_msg_image">[图片]</string>
+    <string name="im_msg_unread">未读</string>
+    <string name="parse_msg_failed">解析消息出错</string>
+    <string name="unknown_msg_hint">此版本不支持该类型消息，请下载最新版本App查看</string></resources>

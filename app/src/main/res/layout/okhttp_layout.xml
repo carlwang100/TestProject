@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainActivity">
+    tools:context="sunland.example.wangchao.testproject.activity.MainActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -26,6 +26,14 @@
                 android:layout_height="wrap_content"
                 android:text="Post"
                 />
+
+            <Button
+                android:id="@+id/my_okhttp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="使用自己的搭建的网络框架"
+                />
+
         </LinearLayout>
 
 
