@@ -27,6 +27,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.exceptions.MissingBackpressureException;
 import io.reactivex.functions.BiFunction;
+import io.reactivex.internal.operators.observable.ObservableAll;
 import io.reactivex.schedulers.Schedulers;
 import sunland.example.wangchao.testproject.activity.BaseActivity;
 
@@ -66,7 +67,8 @@ public class RxJavaActivity extends BaseActivity {
 //        testFlatMap();
 //        testZip();
 //        testZip2();
-        testFlowable();
+//        testFlowable();
+        testJust();
     }
 
     //例子一：创建Observable和Observer
@@ -110,6 +112,7 @@ public class RxJavaActivity extends BaseActivity {
             }
         });
     }
+
 
     //consume只关心onnext事件
     private void testConsumer(){
@@ -290,6 +293,39 @@ public class RxJavaActivity extends BaseActivity {
 
         upStream.subscribe(downStream);
 
+    }
+
+
+    void testJust(){
+        Observable.just("wangchao")
+                .map(new Function<String, String>() {
+
+                    @Override
+                    public String apply(String s) throws Exception {
+                        return s + " nihao";
+                    }
+                })
+                .subscribe(new Observer<String>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        Log.e("tag", "onSubscribe: ");
+                    }
+
+                    @Override
+                    public void onNext(String s) {
+                        Log.e("tag", "onNext: " + s);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e("tag", "onError: ");
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.e("tag", "onComplete: ");
+                    }
+                });
     }
 
 

@@ -45,6 +45,7 @@ public class CameraActivity extends Activity implements TextureView.SurfaceTextu
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.camera_layout);
         handlerThread = new HandlerThread("Camera2");
         handlerThread.start();
         handler = new Handler(handlerThread.getLooper());

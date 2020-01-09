@@ -1,6 +1,11 @@
 package com.example.alg_lib.threadlocal;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class VolatileTest {
+    private AtomicInteger increace = new AtomicInteger();
+
+    public volatile int race = 0;
 
     public void testVolitale(){
         Thread[] threads = new Thread[4];
@@ -22,10 +27,17 @@ public class VolatileTest {
 
     }
 
-    public volatile int race = 0;
+    private void increase() {
+        increace.incrementAndGet();
+        System.out.println(Thread.currentThread().getName() + "-->>" + increace);
+    }
 
-    private synchronized void increase() {
-            race++;
-            System.out.println(Thread.currentThread().getName() + "-->>" + race);
-        }
+
+    //加锁方式
+//    private synchronized void increase() {
+//        race++;
+//        System.out.println(Thread.currentThread().getName() + "-->>" + race);
+//    }
+
+
 }

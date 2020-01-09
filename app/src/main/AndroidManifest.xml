@@ -30,6 +30,7 @@
         <activity android:name="sunland.example.wangchao.testproject.activity.XfermodeActivity"/>
         <activity android:name="widget.RoundImageActivity" />
         <activity android:name="thread.ThreadTestActivity"/>
+        <activity android:name="rxjava.MyRxJavaActivity"/>
         <activity android:name="rxjava.RxJavaActivity"/>
         <activity android:name="okhttp.MyOkhttpActivity"/>
         <service android:name="sunland.example.wangchao.testproject.service.BookManagerService"

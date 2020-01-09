@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 
 import camera2.CameraActivity;
+import rxjava.MyRxJavaActivity;
 import sunland.example.wangchao.testproject.PathViewActivity;
 import com.example.wangchao.testproject.R;
 
@@ -77,7 +78,7 @@ public class MainActivity extends BaseActivity {
             case R.id.aidl_btn:
                 break;
             case R.id.rxjava_btn:
-                RxJavaActivity.startActivity(this);
+                MyRxJavaActivity.startActivity(this);
                 break;
             case R.id.camera_btn:
                 CameraActivity.startActivity(this);
