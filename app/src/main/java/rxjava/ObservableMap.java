@@ -2,6 +2,10 @@ package rxjava;
 
 import android.util.Log;
 
+
+/**
+ * 使用静态代理，包装  source永远是上游的observable
+ * */
 public class ObservableMap<T, R> extends Observable<R> {
 
     final Observable<T> source;
@@ -15,7 +19,7 @@ public class ObservableMap<T, R> extends Observable<R> {
 
     @Override
     protected void subscribeActual(Observer<? super R> observer) {
-        //source 是上游传过来的ObservableJust
+        //source 是上游传过来的ObservableJust   
         source.subscribe(new MapObserver(observer, function));
     }
 

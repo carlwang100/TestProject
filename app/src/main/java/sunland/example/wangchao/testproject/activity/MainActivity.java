@@ -1,10 +1,15 @@
 package sunland.example.wangchao.testproject.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Trace;
 import android.util.Log;
 import android.view.View;
 
 import camera2.CameraActivity;
+import eventbus.EventBusActivity;
+import media.AudioRecordTest;
+import mmkv.mmkvActivity;
 import rxjava.MyRxJavaActivity;
 import sunland.example.wangchao.testproject.PathViewActivity;
 import com.example.wangchao.testproject.R;
@@ -12,8 +17,8 @@ import com.example.wangchao.testproject.R;
 import java.text.DecimalFormat;
 
 import okhttp.OkhttpActivity;
-import rxjava.RxJavaActivity;
 import thread.ThreadTestActivity;
+import touchevent.TouchEventActivity;
 import widget.RoundImageActivity;
 
 public class MainActivity extends BaseActivity {
@@ -24,11 +29,13 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Trace.beginSection("oncreate");
         DecimalFormat df=new DecimalFormat(".##");
         double result = x / y;
         int r = (int) (Double.valueOf(df.format(result)) * 100);
         ClassLoader loader = this.getClassLoader().getParent();
         Log.d("wangchao", "onCreate: ---" + loader.toString());
+        Trace.endSection();
     }
 
 
@@ -49,6 +56,10 @@ public class MainActivity extends BaseActivity {
         findViewById(R.id.aidl_btn).setOnClickListener(this);
         findViewById(R.id.rxjava_btn).setOnClickListener(this);
         findViewById(R.id.camera_btn).setOnClickListener(this);
+        findViewById(R.id.touch_btn).setOnClickListener(this);
+        findViewById(R.id.eventbus_btn).setOnClickListener(this);
+        findViewById(R.id.mmkv_btn).setOnClickListener(this);
+        findViewById(R.id.media_btn).setOnClickListener(this);
     }
 
     @Override
@@ -82,6 +93,18 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.camera_btn:
                 CameraActivity.startActivity(this);
+                break;
+            case R.id.touch_btn:
+                TouchEventActivity.startActivity(this);
+                break;
+            case R.id.eventbus_btn:
+                EventBusActivity.startActivity(this);
+                break;
+            case R.id.mmkv_btn:
+                mmkvActivity.startActivity(this);
+                break;
+            case R.id.media_btn:
+                startActivity(new Intent(MainActivity.this, AudioRecordTest.class));
                 break;
         }
     }

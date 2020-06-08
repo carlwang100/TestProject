@@ -1,14 +1,21 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.wangchao.testproject"
         minSdkVersion 21
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+            }
+        }
     }
     buildTypes {
         release {
@@ -22,11 +29,34 @@ android {
             dirs 'libs'
         }
     }
+
+    packagingOptions {
+        doNotStrip "*/armeabi/*.so"
+        doNotStrip "*/armeabi-v7a/*.so"
+        doNotStrip "*/arm64-v8a/*.so"
+        doNotStrip "*/x86/*.so"
+        doNotStrip "*/x86_64/*.so"
+        doNotStrip "*/mips/*.so"
+        doNotStrip "*/mips64/*.so"
+        //...
+
+        exclude 'META-INF/proguard/androidx-annotations.pro'
     }
+
+}
+//在app的build.gradle中添加以下代码
+project.configurations.all{
+    resolutionStrategy.eachDependency{details->
+        if(details.requested.group=='com.android.support'
+                && !details.requested.name.contains('multidex')){
+            details.useVersion"28.0.0"
+        }
+    }
+}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
@@ -34,8 +64,22 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.11.0'
     implementation 'io.reactivex.rxjava2:rxjava:2.0.7'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    implementation 'com.github.bumptech.glide:compiler:4.7.1'
+    implementation 'com.github.bumptech.glide:okhttp3-integration:4.7.1'
+    implementation 'org.greenrobot:eventbus:3.2.0'
+
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
     compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
     compile(name:'mytest-debug', ext:'aar')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation project(path: ':kt_module')
+    implementation 'com.tencent:mmkv-static:1.1.1'
+        debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.2'
+        releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.2'
+
+}
+repositories {
+    mavenCentral()
 }

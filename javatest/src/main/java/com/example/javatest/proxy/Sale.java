@@ -13,4 +13,9 @@ public class Sale implements IBank{
         iBank.applyBank();
         System.out.println("办卡结束");
     }
+
+    @Override
+    public void zhuanqian() {
+
+    }
 }

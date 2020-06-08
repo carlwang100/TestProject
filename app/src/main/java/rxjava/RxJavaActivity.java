@@ -61,6 +61,8 @@ public class RxJavaActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
 //        init();
 //        testConsumer();
 //        testMap();
@@ -124,7 +126,7 @@ public class RxJavaActivity extends BaseActivity {
                 e.onNext(2);
                 e.onNext(3);
             }
-        }).subscribeOn(Schedulers.newThread())
+        }).subscribeOn(Schedulers.io())
           .observeOn(AndroidSchedulers.mainThread())
            .subscribe(new Consumer<Integer>() {
             @Override

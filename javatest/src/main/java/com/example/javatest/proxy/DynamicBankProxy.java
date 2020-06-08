@@ -9,7 +9,6 @@ public class DynamicBankProxy implements InvocationHandler {
     public DynamicBankProxy(Object object){
         this.proxy = object;
     }
-
     //这里的method是指IBank 的applyBank  只有
     @Override
     public Object invoke(Object o, Method method, Object[] args) throws Throwable {

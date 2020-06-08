@@ -33,7 +33,7 @@ public class VolatileTest {
     }
 
 
-    //加锁方式
+//    //加锁方式
 //    private synchronized void increase() {
 //        race++;
 //        System.out.println(Thread.currentThread().getName() + "-->>" + race);

@@ -30,18 +30,32 @@ public class MyRxJavaActivity extends Activity {
     private void init() {
         list.add("1");
         list.add("2");
-        Observable.just(list)
+        Observable.just(list) //返回的是 observablejust
                 .map(new Function<ArrayList<String>, ArrayList>() {
                     @Override
                     public ArrayList apply(ArrayList s){
+                        Log.e("tag", "apply: 1");
                         ArrayList<String> list = new ArrayList<>();
                         for (int i = 0; i < s.size(); i++) {
-                            list.add(s.get(i) + "变换后的");
+                            list.add(s.get(i) + "--->>>一次变换后的");
                         }
                         return list;
                     }
 
                 })
+                .map(new Function<ArrayList, ArrayList>() {
+
+                    @Override
+                    public ArrayList apply(ArrayList arrayList) throws Exception {
+                        Log.e("tag", "apply: 2");
+                        ArrayList<String> list = new ArrayList<>();
+                        for (int i = 0; i < arrayList.size(); i++) {
+                            list.add(arrayList.get(i) + "二次变换后的");
+                        }
+                        return list;
+                    }
+                })
+
                 .subscribe(new Observer<ArrayList>() {
                     @Override
                     public void onSubscribe() {

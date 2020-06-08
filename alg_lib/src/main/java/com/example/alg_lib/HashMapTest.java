@@ -7,7 +7,7 @@ import java.util.Map;
 public class HashMapTest {
 
     public void testTraversal() {
-//        HashMap<Integer, String> map = new HashMap(16);
+//        HashMap<Integer, String> map = new HashMap(1);
 //        map.put(7, "");
 //        map.put(11, "");
 //        map.put(43, "");
@@ -20,7 +20,6 @@ public class HashMapTest {
 //        for (Integer key : map.keySet()) {
 //            System.out.print(key + " -> ");
 //        }
-
         LinkedHashMap<Integer, Integer> map = new LinkedHashMap<>(0, 0.75f, true);
         map.put(0, 0);
         map.put(1,1);
@@ -30,6 +29,7 @@ public class HashMapTest {
         map.get(1);
         map.put(4,4);
         map.get(1);
+        map.get(2);
         //最近访问的最后输出，这正式lru缓存的策略
         for (Map.Entry<Integer, Integer> entry : map.entrySet()){
             System.out.println(entry.getKey() + ":" + entry.getValue());

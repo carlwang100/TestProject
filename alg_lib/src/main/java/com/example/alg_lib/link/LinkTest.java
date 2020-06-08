@@ -87,7 +87,6 @@ public class LinkTest {
         while (cur != null){
             tmp = cur.next;
             cur.next = pre;
-
             pre = cur;
             cur = tmp;
         }
@@ -237,6 +236,10 @@ public class LinkTest {
         tmp.next = data;
     }
 
+
+    /**
+     * 删除链表中重复的节点
+     * */
     public Node deleteDuplicates(Node head){
         if (head == null)return null;
         Node hunmp = head;

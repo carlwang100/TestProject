@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.wangchao.testproject">
 
     <uses-permission android:name="android.permission.CAMERA" />
@@ -7,6 +8,7 @@
     <!-- 读写内/外部存储权限 begin -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <!-- 在SDCard中创建与删除文件权限 -->
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <application
@@ -14,6 +16,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:name="sunland.example.wangchao.testproject.TestApplication"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name="sunland.example.wangchao.testproject.activity.MainActivity">
@@ -28,19 +31,25 @@
         <activity android:name="sunland.example.wangchao.testproject.activity.WaterImgActivity"/>
         <activity android:name="sunland.example.wangchao.testproject.PathViewActivity"/>
         <activity android:name="sunland.example.wangchao.testproject.activity.XfermodeActivity"/>
+        <activity android:name="touchevent.TouchEventActivity"/>
         <activity android:name="widget.RoundImageActivity" />
         <activity android:name="thread.ThreadTestActivity"/>
         <activity android:name="rxjava.MyRxJavaActivity"/>
         <activity android:name="rxjava.RxJavaActivity"/>
         <activity android:name="okhttp.MyOkhttpActivity"/>
-        <service android:name="sunland.example.wangchao.testproject.service.BookManagerService"
             android:process=":remote"
-            android:enabled="true"
-            android:exported="true"
-            />
-        <activity android:name="sunland.example.wangchao.testproject.aidl.BookMnagerActivity"/>
+<!--        <service android:name="aidl.server.ComputerManagerService"-->
+<!--            android:enabled="true"-->
+<!--            android:exported="true"-->
+<!--            android:process="aidl"-->
+<!--            />-->
         <activity android:name="camera2.CameraActivity"/>
         <activity android:name="sunland.example.wangchao.testproject.activity.WaterImgActivity2"/>
+        <activity android:name="eventbus.EventBusActivity"/>
+        <activity android:name="eventbus.TestActivity"/>
+        <activity android:name="aidl.client.ComputerListActivity"/>
+        <activity android:name="mmkv.mmkvActivity"/>
+        <activity android:name="media.AudioRecordTest"/>
     </application>
 
 </manifest>

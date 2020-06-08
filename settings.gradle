@@ -1,1 +1,3 @@
 include ':app', ':javatest','alg_lib'
+include ':kt_module'
+include ':kt_learning'

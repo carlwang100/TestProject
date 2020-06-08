@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <touchevent.GroupA
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <touchevent.GroupB
+                android:layout_width="300dp"
+                android:gravity="center"
+                android:background="#336699"
+                android:layout_height="300dp">
+                <touchevent.MyView
+                    android:id="@+id/myview"
+                    android:clickable="true"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="#ffff00"
+                    />
+            </touchevent.GroupB>
+        </touchevent.GroupA>
+</LinearLayout>

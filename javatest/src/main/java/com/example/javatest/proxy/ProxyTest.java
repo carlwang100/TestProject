@@ -17,11 +17,14 @@ public class ProxyTest {
      * f
      * */
     public void testDynamicProxy(){
+        //原始类
         IBank client = new Client();
+        Class<?>[] clientClazz = client.getClass().getInterfaces();
         //注意三个参数
         //生成代理类的一个实例sale
-        IBank sale = (IBank) Proxy.newProxyInstance(IBank.class.getClassLoader(), new Class<?>[]{IBank.class}, new DynamicBankProxy(client));
+        IBank sale = (IBank) Proxy.newProxyInstance(IBank.class.getClassLoader(), clientClazz,  new DynamicBankProxy(client));
         //执行方法的时候才会触发代理类的invoke方法，
         sale.applyBank();
+        sale.zhuanqian();
     }
 }

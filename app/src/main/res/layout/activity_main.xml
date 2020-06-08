@@ -78,6 +78,36 @@
                 android:text="CAMERA2"
                 />
 
+            <Button
+                android:id="@+id/touch_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TOUCH_EVEVT"
+                />
+
+            <Button
+                android:id="@+id/eventbus_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="EVENT_BUS"
+                />
+
+            <Button
+                android:id="@+id/mmkv_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MMKV_BTN"
+                />
+
+
+            <Button
+                android:id="@+id/media_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MEDIA_BTN"
+                />
+
+
 
         </LinearLayout>
 

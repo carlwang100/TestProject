@@ -4,12 +4,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.PersistableBundle;
+import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.wangchao.testproject.R;
+
+import org.w3c.dom.Text;
 
 import okhttp3.Cache;
 import okhttp3.Call;
@@ -46,13 +50,33 @@ public class OkhttpActivity extends BaseActivity {
     public void initViews() {
        findViewById(R.id.http_get).setOnClickListener(this);
        findViewById(R.id.http_post).setOnClickListener(this);
-        findViewById(R.id.my_okhttp).setOnClickListener(this);
+       findViewById(R.id.my_okhttp).setOnClickListener(this);
     }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         init();
+
+        //测试在子线程中更新ui
+//        final TextView tv = findViewById(R.id.testview);
+//
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+////                try {
+////                    Thread.sleep(3000);
+////
+////                } catch (InterruptedException e) {
+////                    e.printStackTrace();
+////                }
+////                tv.setText("ni");
+//                Looper.prepare();
+//                Toast.makeText(OkhttpActivity.this, "111", Toast.LENGTH_SHORT).show();
+//                Looper.loop();
+//            }
+//        }).start();
+
     }
 
     @Override
@@ -111,7 +135,7 @@ public class OkhttpActivity extends BaseActivity {
 
 
 
-    private static final MediaType MEDIA_TYPE_PNG = MediaType.parse("image/png");
+    private static final MediaType MEDIA_TYPE_PNG = MediaType.parse("imageloader/png");
 
 
     /**
@@ -121,7 +145,7 @@ public class OkhttpActivity extends BaseActivity {
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("name", "wangchao")
-                .addFormDataPart("image", "logo", RequestBody.create(MEDIA_TYPE_PNG,
+                .addFormDataPart("imageloader", "logo", RequestBody.create(MEDIA_TYPE_PNG,
                         new File("website/static/logo-square.png")))
                 .build();
 
