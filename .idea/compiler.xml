@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="alg_lib" target="1.7" />
+      <module name="javatest" target="1.7" />
+      <module name="kt_learning" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -13,11 +13,18 @@ class main_kt {
             var baseLearninng = BaseLearninng()
             println("sum is " + baseLearninng.testSum(3, 6))
             println(baseLearninng.sum(4, 40))
+            var contructorTest: ContructorTest = ContructorTest("wangc")
+            testAddress()
         }
 
         //参数是ab,返回值是Int
         fun testSum(a: Int, b: Int) : Int{
             return a + b
+        }
+
+        fun testAddress(){
+            var adress = Adress()
+            adress.test()
         }
 
     }
