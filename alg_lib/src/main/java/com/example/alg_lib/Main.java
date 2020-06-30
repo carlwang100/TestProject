@@ -2,6 +2,7 @@ package com.example.alg_lib;
 
 import com.example.alg_lib.cache.LruCache;
 import com.example.alg_lib.cache.LruCacheTest;
+import com.example.alg_lib.leetcode.ArrayTrainning;
 import com.example.alg_lib.link.LinkTest;
 import com.example.alg_lib.threadlocal.CountDownLatchTest;
 import com.example.alg_lib.threadlocal.ThreadLocalTest;
@@ -22,8 +23,8 @@ public class Main {
 //        operateLink();
 //        operateTree();
 //        operateHashMap();
-//        testArray();
-        testThread();
+        testArray();
+//        testThread();
 //        testThreadLocal();
 //        testVolatile();
 //        testCountDownLatch();
@@ -36,21 +37,21 @@ public class Main {
     }
 
 
-    //æ‰“å°ä»1åˆ°nçš„æœ€å¤§nä½æ•°
+    //´òÓ¡´Ó1µ½nµÄ×î´ónÎ»Êı
     private static void printFrom1toNbit(int n) {
-        // è¾“å…¥çš„æ•°å­—ä¸èƒ½ä¸ºå°äº1
+        // ÊäÈëµÄÊı×Ö²»ÄÜÎªĞ¡ÓÚ1
         if (n < 1) {
             throw new RuntimeException("The input number must larger than 0");
         }
-        // åˆ›å»ºä¸€ä¸ªæ•°ç»„ç”¨äºæ‰“å­˜æ”¾å€¼
+        // ´´½¨Ò»¸öÊı×éÓÃÓÚ´ò´æ·ÅÖµ
         int[] arr = new int[n];
         printOneToNthDigits(0, arr);
     }
 
     private static void printOneToNthDigits(int n, int[] arr) {
-       // è¯´æ˜æ•°ç»„å·²ç»è£…æ»¡å…ƒç´ 
+       // ËµÃ÷Êı×éÒÑ¾­×°ÂúÔªËØ
         if (n >= arr.length) {
-            // å¯ä»¥è¾“å‡ºæ•°ç»„çš„å€¼
+            // ¿ÉÒÔÊä³öÊı×éµÄÖµ
             printArray(arr);
         } else {
             for (int i = 0; i <= 9; i++) {
@@ -61,17 +62,17 @@ public class Main {
     }
 
     private static void printArray(int[] arr) {
-        // æ‰¾ç¬¬ä¸€ä¸ªé0çš„å…ƒç´ 
+        // ÕÒµÚÒ»¸ö·Ç0µÄÔªËØ
         int index = 0;
         while (index < arr.length && arr[index] == 0) {
             index++;
         }
 
-        // ä»ç¬¬ä¸€ä¸ªé0å€¼åˆ°å¼€å§‹è¾“å‡ºåˆ°æœ€åçš„å…ƒç´ ã€‚
+        // ´ÓµÚÒ»¸ö·Ç0Öµµ½¿ªÊ¼Êä³öµ½×îºóµÄÔªËØ¡£
         for (int i = index; i < arr.length; i++) {
             System.out.print(arr[i]);
         }
-        // æ¡ä»¶æˆç«‹è¯´æ˜æ•°ç»„ä¸­æœ‰éé›¶å…ƒç´ ï¼Œæ‰€ä»¥éœ€è¦æ¢è¡Œ
+        // Ìõ¼ş³ÉÁ¢ËµÃ÷Êı×éÖĞÓĞ·ÇÁãÔªËØ£¬ËùÒÔĞèÒª»»ĞĞ
         if (index < arr.length) {
             System.out.println();
         }
@@ -115,7 +116,7 @@ public class Main {
 
     private static void read() {
         if (flag){
-            System.out.print("-----ã€‹ã€‹ã€‹" + value * value);
+            System.out.print("-----¡·¡·¡·" + value * value);
         }
     }
 
@@ -131,19 +132,19 @@ public class Main {
     }
 
 
-    // æŸ¥æ‰¾æ•°ç»„ä¸­é‡å¤çš„æ•°å­—
+    // ²éÕÒÊı×éÖĞÖØ¸´µÄÊı×Ö
     private static boolean duplicate(int[] numbers) {
         if (numbers == null || numbers.length == 0) return false;
         for (int i = 0; i < numbers.length; i++) {
             if (numbers[i] < 0 || numbers[i] > numbers.length) return false;
         }
         for (int i = 0; i < numbers.length; i++){
-            while (numbers[i] != i){//ç¬¬ä¸€æ­¥
-                if (numbers[i] == numbers[numbers[i]]){//ç¬¬äºŒæ­¥
-                    System.out.println("é‡å¤çš„æ•°å­—-----> " + numbers[i]);
+            while (numbers[i] != i){//µÚÒ»²½
+                if (numbers[i] == numbers[numbers[i]]){//µÚ¶ş²½
+                    System.out.println("ÖØ¸´µÄÊı×Ö-----> " + numbers[i]);
                     return true;
                 }
-                //ç¬¬ä¸‰æ­¥
+                //µÚÈı²½
                 int tmp = numbers[i];
                 numbers[i] = numbers[tmp];
                 numbers[tmp] = tmp;
@@ -177,7 +178,7 @@ public class Main {
 //        treeNodeTest.heigh();
 
 //        int[] a = {11,12,15,13,21,30,23,16};
-//        System.out.println("æ˜¯å¦æ˜¯äºŒå‰æœç´¢æ ‘çš„ååºæ’åˆ—----->>>>" + treeNodeTest.verifySequenceOfBST(a));
+//        System.out.println("ÊÇ·ñÊÇ¶ş²æËÑË÷Ê÷µÄºóĞòÅÅÁĞ----->>>>" + treeNodeTest.verifySequenceOfBST(a));
 //        treeNodeTest.printFromRoot(root);
 //        treeNodeTest.inOrderTraversalLoop();
 //        treeNodeTest.preOrderTraversal();
@@ -188,7 +189,7 @@ public class Main {
     }
 
     /**
-     * ç”Ÿæˆæµ‹è¯•æ ‘
+     * Éú³É²âÊÔÊ÷
      *        10
      *      /    \
      *    3      12
@@ -225,20 +226,24 @@ public class Main {
 
     public static void testArray(){
 //        int[] a = {2,3,2,2,4,4};
-        int[] a = {1,2,3,4,6,7,8,9};
+//        int[] a = {1,2,3,4,6,7,8,9};
+        int[] a = {1,1,1,1,1,1};
 //        ArrayTest arrayTest = new ArrayTest();
 //        arrayTest.findMoreThanHalfNum(a);
 //        arrayTest.findMissedNum(a);
 //        ArrayTest.permutation("12".toCharArray());
 //        ArrayTest.findSum(a, 9 );
-        ArrayTest.maxSlidingWindow(a, 3);
+//        ArrayTest.maxSlidingWindow(a, 3);
+
+        ArrayTrainning arrayTrainning = new ArrayTrainning();
+        arrayTrainning.numOfSubarrays(a, 1, 1);
     }
 
     public static void testLruCache(){
         LruCacheTest.lruTest();
     }
 
-    //æŸ¥æ‰¾ä»1-nä¸­1çš„ä¸ªæ•°
+    //²éÕÒ´Ó1-nÖĞ1µÄ¸öÊı
     public static void findOnes(int n){
         int num = 0;
         for (int i = 0; i < n; i++) {

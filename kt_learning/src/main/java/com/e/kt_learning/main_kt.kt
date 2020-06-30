@@ -15,6 +15,32 @@ class main_kt {
             println(baseLearninng.sum(4, 40))
             var contructorTest: ContructorTest = ContructorTest("wangc")
             testAddress()
+            testSington()
+            testDelegate()
+        }
+
+        private fun testDelegate() {
+            var d = DelegateTest()
+            println(d.p)
+
+            d.p = "NEW"
+            println(d.p)
+
+
+            println(d.lazyValue)
+            println(d.lazyValue)
+
+            println("sum is ->>>" + d.sum1(1, 3))
+
+        }
+
+        private fun testSington() {
+            var a: Int = SingtonTest.getCoin()
+            println("init a is ->>>" + a)
+
+            SingtonTest.addCoin()
+
+            println("update a is ->>>" + SingtonTest.getCoin())
         }
 
         //参数是ab,返回值是Int
