@@ -4,6 +4,7 @@ import java.lang.Double.sum
 
 class main_kt {
 
+
     companion object {
         /** 我是main入口函数 **/
         @JvmStatic
@@ -17,6 +18,11 @@ class main_kt {
             testAddress()
             testSington()
             testDelegate()
+            testList()
+        }
+
+        private fun testList() {
+                ListTest().testList()
         }
 
         private fun testDelegate() {

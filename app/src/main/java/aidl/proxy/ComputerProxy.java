@@ -1,9 +1,7 @@
 package aidl.proxy;
 
-import android.os.Binder;
 import android.os.IBinder;
 import android.os.Parcel;
-import android.os.Parcelable;
 import android.os.RemoteException;
 
 import java.util.List;

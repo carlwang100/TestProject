@@ -11,6 +11,7 @@ public class LruCacheTest {
         cache.put("6", "wangchao");
         cache.get("4");
         cache.get("2");
+        cache.put("4", "wamgchao");
         cache.printNode();
     }
 }

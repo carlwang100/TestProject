@@ -12,9 +12,11 @@ class ContructorTest : Base{
         println("int constructor--->>>" + name)
     }
 
+    var str: String = ""
     override fun foo() {
         super.foo()
         println("")
+
     }
 
 }

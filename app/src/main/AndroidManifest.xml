@@ -37,12 +37,9 @@
         <activity android:name="rxjava.MyRxJavaActivity"/>
         <activity android:name="rxjava.RxJavaActivity"/>
         <activity android:name="okhttp.MyOkhttpActivity"/>
+        <service android:name="aidl.server.ComputerManagerService"
             android:process=":remote"
-<!--        <service android:name="aidl.server.ComputerManagerService"-->
-<!--            android:enabled="true"-->
-<!--            android:exported="true"-->
-<!--            android:process="aidl"-->
-<!--            />-->
+            />
         <activity android:name="camera2.CameraActivity"/>
         <activity android:name="sunland.example.wangchao.testproject.activity.WaterImgActivity2"/>
         <activity android:name="eventbus.EventBusActivity"/>

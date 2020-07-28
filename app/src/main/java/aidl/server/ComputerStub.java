@@ -13,9 +13,12 @@ import java.util.List;
 import aidl.Computer;
 import aidl.proxy.ComputerProxy;
 
+/**
+ * 服务端的实现
+ * */
 public abstract class ComputerStub extends Binder implements IComputerManager {
 
-    public static final java.lang.String DESCRIPTOR = "com.example.wangchao.testproject.IBookManager";
+    public static final java.lang.String DESCRIPTOR = "aidl.server.IComputerManager";
 
 
     public static final int TRANSACTION_getComputers = (IBinder.FIRST_CALL_TRANSACTION + 0);

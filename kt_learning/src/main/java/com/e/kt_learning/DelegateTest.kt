@@ -3,6 +3,7 @@ package com.e.kt_learning
 import kotlin.properties.Delegates
 
 class DelegateTest {
+
      //会调用getValue函数
      var p: String by Delegate()
 

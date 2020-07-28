@@ -23,7 +23,7 @@ public class LruCache {
     }
 
     /**
-     * 更新node 就是删除node的旧位置，添加到尾部
+     * 更新node 就是删除node的旧位置，添加到尾部 这里的尾部就是最近访问的 这个是自己设计的 尾部更加方便添加数据和更改指针
      */
     private void refreshNode(Node node) {
         if (node == null) return;
@@ -44,6 +44,7 @@ public class LruCache {
         }
     }
 
+    //hashmap的作用就是快速定位某个node，然后refresh就是调整该node的指针
     public void put(String key, String value) {
         Node node = hashMap.get(key);
         if (node == null) {

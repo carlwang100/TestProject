@@ -13,7 +13,6 @@ import android.view.View;
 
 import com.example.wangchao.testproject.R;
 
-import java.util.Arrays;
 import java.util.List;
 
 import aidl.Computer;
@@ -21,7 +20,6 @@ import aidl.server.ComputerManagerService;
 import aidl.server.ComputerStub;
 import aidl.server.IComputerManager;
 import sunland.example.wangchao.testproject.activity.BaseActivity;
-import thread.ThreadTestActivity;
 
 public class ComputerListActivity extends BaseActivity {
 

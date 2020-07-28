@@ -6,6 +6,7 @@ import android.os.Trace;
 import android.util.Log;
 import android.view.View;
 
+import aidl.client.ComputerListActivity;
 import camera2.CameraActivity;
 import eventbus.EventBusActivity;
 import media.AudioRecordTest;
@@ -15,6 +16,7 @@ import sunland.example.wangchao.testproject.PathViewActivity;
 import com.example.wangchao.testproject.R;
 
 import java.text.DecimalFormat;
+import java.util.HashMap;
 
 import okhttp.OkhttpActivity;
 import thread.ThreadTestActivity;
@@ -87,6 +89,7 @@ public class MainActivity extends BaseActivity {
                 ThreadTestActivity.startActivity(this);
                 break;
             case R.id.aidl_btn:
+                ComputerListActivity.startActivity(this);
                 break;
             case R.id.rxjava_btn:
                 MyRxJavaActivity.startActivity(this);

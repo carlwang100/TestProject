@@ -23,12 +23,12 @@ public class Main {
 //        operateLink();
 //        operateTree();
 //        operateHashMap();
-        testArray();
+//        testArray();
 //        testThread();
 //        testThreadLocal();
 //        testVolatile();
 //        testCountDownLatch();
-//        testLruCache();
+        testLruCache();
 //        printFrom1toNbit(2);
     }
 
