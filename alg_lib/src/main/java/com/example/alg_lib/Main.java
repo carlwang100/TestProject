@@ -28,8 +28,13 @@ public class Main {
 //        testThreadLocal();
 //        testVolatile();
 //        testCountDownLatch();
-        testLruCache();
+//        testLruCache();
 //        printFrom1toNbit(2);
+        testPriority();
+    }
+
+    private static void testPriority() {
+        new PriorityQueueDemo().testPriority();
     }
 
     private static void testCountDownLatch() {
