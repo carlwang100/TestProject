@@ -1,0 +1,65 @@
+
+println("rules------------------start")
+
+buildscript {
+    println("buildscript------------------start")
+    repositories {
+        maven() { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    }
+    dependencies {
+        //FileUtils的import在这个库里面
+        classpath "commons-io:commons-io:2.6"
+    }
+
+    println("buildscript------------------end")
+}
+
+task printMap1{
+    def map1 = ['width':1024, 'height':768]
+    println map1.height
+    println map1.width
+
+}
+
+
+import org.apache.commons.io.FileUtils
+import org.apache.commons.io.filefilter.TrueFileFilter
+
+//rules配置完成之后再执行
+this.afterEvaluate {
+    File localFile = rootProject.file('local.properties')
+    if (localFile.exists()){
+        println('local file exist')
+        Collection<File> files = FileUtils.listFiles(new File("./app/src/main"), TrueFileFilter.INSTANCE, TrueFileFilter.INSTANCE)
+        println(files.size())
+        files.each {
+            println(it)
+        }
+
+        files.each {File file ->
+            if (checkFile(file)){
+                return
+            }
+        }
+
+
+    }else {
+        println('local file not exist')
+    }
+}
+
+ boolean checkFile(File file){
+    def filepPath = file.absolutePath
+
+    if (filepPath.endsWith(".java") || filepPath.endsWith(".kt")){
+        if (filepPath.contains("sunland${File.separator}example${File.separator}wangchao${File.separator}")){
+            println("找到了我需要找的包名-------------------------")
+            return true
+        }else {
+            println("没有我需要找的包名-------------------------")
+            return false
+        }
+    }
+}
+
+println("rules------------------end")
