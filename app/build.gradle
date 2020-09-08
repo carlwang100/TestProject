@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android-extensions'
 
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -43,6 +44,7 @@ android {
         exclude 'META-INF/proguard/androidx-annotations.pro'
     }
 
+
 }
 //在app的build.gradle中添加以下代码
 project.configurations.all{
@@ -53,6 +55,83 @@ project.configurations.all{
         }
     }
 }
+
+
+
+task hello{
+    doLast {
+        println 'hello world!'
+        int s = 1
+        int a = 2
+        println(s + a)
+        //单引号不能对字符串里的表达式做运算
+        def str1 = '单引号'
+        def str2 = "双引号"
+
+        println str1.getClass()
+        print str2.getClass()
+
+    }
+}
+
+
+//集合list定义
+task printList{
+    def numList = [1,2,3,4,5]
+
+    println numList[1]
+    println numList[-2]
+    println "each demo----------->>>"
+    //代码块作为参数传递
+    numList.each {
+        println it
+    }
+
+}
+
+
+task printMap{
+    def map1 = ['width':1024, 'height':768]
+
+    println map1.height
+    println map1.width
+
+}
+
+
+//方法调用
+
+task invokeMethod {
+    method1 1 , 2
+}
+
+def method1(int a, int b){
+    println("加法-----------")
+    println a + b
+}
+
+
+task helloClosure {
+    //使用自定义的闭包
+    customEach{
+        //println这个相当于是customEach的参数 这有点类似于kt的高阶函数，c语言的函数指针
+        println(it)
+    }
+}
+
+def customEach(closure){
+    println("闭包-----------------")
+    for (int i in 1..10) {
+        closure(i)
+    }
+}
+
+
+//apply 会根据文件的导入点来的顺序来执行，比如这里就比较靠后执行了
+apply from: 'rules.gradle'
+
+
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])

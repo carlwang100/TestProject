@@ -17,9 +17,9 @@ public class PriorityQueueDemo {
         System.out.println("Initial PriorityQueue: " + queue);
 
         // Removing elements using remove() method
-        queue.remove(30);
+        queue.remove(20);
         System.out.println("queue--" + queue);
-        queue.remove(5);
-        System.out.println("queue--" + queue);
+//        queue.remove(5);
+//        System.out.println("queue--" + queue);
     }
 }
