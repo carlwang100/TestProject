@@ -112,15 +112,16 @@ def method1(int a, int b){
 
 
 task helloClosure {
+    println("闭包-----------------start")
     //使用自定义的闭包
     customEach{
         //println这个相当于是customEach的参数 这有点类似于kt的高阶函数，c语言的函数指针
         println(it)
     }
+    println("闭包-----------------end")
 }
 
 def customEach(closure){
-    println("闭包-----------------")
     for (int i in 1..10) {
         closure(i)
     }

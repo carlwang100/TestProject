@@ -1,3 +1,6 @@
+include ':mylibrary'
+project(':mylibrary').projectDir = new File(rootDir, 'module/mylibrary') //可以指针任意目录下的module
+
 include ':app', ':javatest','alg_lib'
 include ':kt_module'
 include ':kt_learning'

@@ -16,6 +16,7 @@
             <option value="$PROJECT_DIR$/javatest" />
             <option value="$PROJECT_DIR$/kt_learning" />
             <option value="$PROJECT_DIR$/kt_module" />
+            <option value="$PROJECT_DIR$/module/mylibrary" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -33,7 +33,6 @@ this.afterEvaluate {
         Collection<File> files = FileUtils.listFiles(new File("./app/src/main"), TrueFileFilter.INSTANCE, TrueFileFilter.INSTANCE)
         println(files.size())
         files.each {
-            println(it)
         }
 
         files.each {File file ->
@@ -52,14 +51,28 @@ this.afterEvaluate {
     def filepPath = file.absolutePath
 
     if (filepPath.endsWith(".java") || filepPath.endsWith(".kt")){
+        //$表示在字符串中的占位符
         if (filepPath.contains("sunland${File.separator}example${File.separator}wangchao${File.separator}")){
-            println("找到了我需要找的包名-------------------------")
             return true
         }else {
-            println("没有我需要找的包名-------------------------")
             return false
         }
     }
+}
+
+
+task TA << {
+    println("A")
+}
+
+task TB << {
+    println("B")
+}
+
+task maintask{
+    //任务依赖，等A B执行完后再去执行main
+    dependsOn TA, TB
+    println("main")
 }
 
 println("rules------------------end")
