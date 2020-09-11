@@ -1,0 +1,10 @@
+
+ext{
+
+    println("common-----------start")
+
+    force=[
+            'wangchao'
+    ]
+}
+
