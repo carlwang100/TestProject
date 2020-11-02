@@ -67,6 +67,7 @@ public class CameraActivity extends Activity implements TextureView.SurfaceTextu
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                 return;
             }
+            //打开相机
             cameraManager.openCamera(cameraList[0], stateCallback, handler);
 
         } catch (CameraAccessException e) {

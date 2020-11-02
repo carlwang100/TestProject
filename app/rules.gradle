@@ -1,4 +1,6 @@
 
+apply plugin: ExCustomPlugin
+
 println("rules------------------start")
 
 buildscript {
@@ -26,26 +28,26 @@ import org.apache.commons.io.FileUtils
 import org.apache.commons.io.filefilter.TrueFileFilter
 
 //rules配置完成之后再执行
-this.afterEvaluate {
-    File localFile = rootProject.file('local.properties')
-    if (localFile.exists()){
-        println('local file exist')
-        Collection<File> files = FileUtils.listFiles(new File("./app/src/main"), TrueFileFilter.INSTANCE, TrueFileFilter.INSTANCE)
-        println(files.size())
-        files.each {
-        }
-
-        files.each {File file ->
-            if (checkFile(file)){
-                return
-            }
-        }
-
-
-    }else {
-        println('local file not exist')
-    }
-}
+//this.afterEvaluate {
+//    File localFile = rootProject.file('local.properties')
+//    if (localFile.exists()){
+//        println('local file exist')
+//        Collection<File> files = FileUtils.listFiles(new File("./app/src/main"), TrueFileFilter.INSTANCE, TrueFileFilter.INSTANCE)
+//        println(files.size())
+//        files.each {
+//        }
+//
+//        files.each {File file ->
+//            if (checkFile(file)){
+//                return
+//            }
+//        }
+//
+//
+//    }else {
+//        println('local file not exist')
+//    }
+//}
 
  boolean checkFile(File file){
     def filepPath = file.absolutePath
@@ -61,11 +63,11 @@ this.afterEvaluate {
 }
 
 
-task TA << {
+task TA doLast  {
     println("A")
 }
 
-task TB << {
+task TB doLast  {
     println("B")
 }
 
@@ -74,5 +76,30 @@ task maintask{
     dependsOn TA, TB
     println("main")
 }
+
+
+Task myTask = task aaa
+myTask.group = BasePlugin.BUILD_GROUP
+myTask.description = '我是构建任务'
+
+myTask.doLast{
+    println "group----------------"
+}
+
+
+
+//自定义简单插件
+class ExCustomPlugin implements Plugin<Project>{
+    @Override
+    void apply(Project target) {
+        //咱们开发人员在这里做想做的事
+        target.task('customplugin') doLast  {
+            println("我是自定义插件，谁敢放肆------------->>>>>>>>>>>>>>>>>")
+        }
+    }
+}
+
+
+
 
 println("rules------------------end")

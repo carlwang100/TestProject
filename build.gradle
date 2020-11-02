@@ -7,10 +7,14 @@ buildscript {
         maven { url 'https://jitpack.io' }
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         google()
+        //Android插件托管在这里
         jcenter()
     }
+
+    //第三方插件的依赖之处，此处声明下，然后再使用apply plugin去使用即可
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.3'
+        //android插件
+        classpath 'com.android.tools.build:gradle:4.0.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
 
@@ -39,6 +43,8 @@ subprojects {
     rootProject.ext.force.each{item->
         println(item)
     }
+
+    println(rootProject.ext.age)
 }
 
 task clean(type: Delete) {

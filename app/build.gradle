@@ -3,7 +3,9 @@ apply plugin: 'kotlin-android-extensions'
 
 
 android {
+    //sdk编译的版本
     compileSdkVersion 28
+    //配置包的属性 默认配置
     defaultConfig {
         applicationId "com.example.wangchao.testproject"
         minSdkVersion 21
@@ -22,6 +24,14 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //自定义BuildConfig 比如CI里面的一些参数
+            buildConfigField("String", "BRANCH_NAME" , '"www.baidu.com"')
+            buildConfigField("boolean", "IS_JENKINS", "true")
+        }
+        //自定义BuildConfig 比如CI里面的一些参数
+        debug{
+            buildConfigField("String", "BRANCH_NAME" , '"www.baidu.com"')
+            buildConfigField("boolean", "IS_JENKINS", "true")
         }
     }
 
@@ -44,6 +54,29 @@ android {
         exclude 'META-INF/proguard/androidx-annotations.pro'
     }
 
+    //依次点击 Build > Build APK，为 Project 窗格中当前选定的模块构建所有 APK。Gradle 会在项目的 build/outputs/apk/ 目录中针对每种密度或 ABI 创建 APK。
+    splits {
+        density {
+            enable true
+            reset()
+            include "mdpi", "hdpi"
+        }
+        abi {
+            enable true
+            reset()
+            include "x86", "x86_64"
+        }
+
+    }
+
+//    productFlavors {
+//        free {
+//            applicationIdSuffix ".free"
+//        }
+//        pro {
+//            applicationIdSuffix ".pro"
+//        }
+//    }
 
 }
 //在app的build.gradle中添加以下代码
@@ -55,6 +88,7 @@ project.configurations.all{
         }
     }
 }
+
 
 
 
@@ -71,9 +105,30 @@ task hello{
         println str1.getClass()
         print str2.getClass()
 
+        isJKSBuild()
+
     }
 }
 
+//使用local.properties文件里面的某个标识位来代表是否使用的是jks编译
+public boolean isJKSBuild() {
+    File file = rootProject.file('local.properties')
+    if (file.exists()) {
+        InputStream inputStream = rootProject.file('local.properties').newDataInputStream();
+        Properties properties = new Properties()
+        properties.load(inputStream)
+        if (properties.containsKey("JKSBuild")) {
+            println 'is jks--------->>>>>>>>>>>>>'
+            return properties.getProperty("JKSBuild")
+        } else {
+            println 'is not jks--------->>>>>>>>>>>>>'
+            return false
+        }
+
+    } else {
+        return true
+    }
+}
 
 //集合list定义
 task printList{
@@ -127,11 +182,8 @@ def customEach(closure){
     }
 }
 
-
 //apply 会根据文件的导入点来的顺序来执行，比如这里就比较靠后执行了
 apply from: 'rules.gradle'
-
-
 
 
 dependencies {

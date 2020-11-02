@@ -1,5 +1,8 @@
 
-ext{
+//这个ext是特定的名字，不能随意更改，否则编译报错
+
+ext.age = 19
+ext {
 
     println("common-----------start")
 
